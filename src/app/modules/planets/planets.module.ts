@@ -6,11 +6,11 @@ import { PlanetComponent } from './planet/planet.component';
 
 const routes: Routes = [
   {
-    path: '/',
+    path: '',
     component: PlanetsComponent,
   },
   {
-    path: '/:id',
+    path: ':id',
     component: PlanetComponent
   },
 ];
