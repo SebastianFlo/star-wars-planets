@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PlanetsApi } from 'src/app/api/planets.api';
 
 @Component({
   selector: 'app-planets',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlanetsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private planetsApi: PlanetsApi) { }
 
   ngOnInit(): void {
+    this.planetsApi.loadPlanets();
   }
 
 }

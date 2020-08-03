@@ -1,1 +1,1 @@
-export const BASE_URL = 'https://swapi.co/api/planets';
+export const BASE_URL = '/api/planets';

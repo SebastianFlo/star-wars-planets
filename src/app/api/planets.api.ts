@@ -17,10 +17,11 @@ export class PlanetsApi {
 
   loadPlanets() {
     // TODO: Add actions
-    this.http.get<Planets>(BASE_URL)
+    this.http.get<Planets>(BASE_URL, {})
       .pipe(take(1))
       .subscribe(
           planets => {
+            console.log(planets);
               // this.store.dispatch(new activeOrganizationActions.LoadOrganizationSuccess(organization));
           },
           (errorResponse: HttpErrorResponse) => {
