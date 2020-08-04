@@ -13,6 +13,7 @@ export interface Planet {
   created: string;
   edited: string;
   url: string;
+  id?: string;
 }
 
 export interface Planets {

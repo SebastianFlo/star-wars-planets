@@ -4,7 +4,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { take, map, catchError } from 'rxjs/operators';
 
 import { BASE_URL } from './url.const';
-import { Planets } from '../data/modules/planets/models';
+import { Planets, Planet } from '../data/modules/planets/models';
 import { throwError } from 'rxjs';
 
 @Injectable({
@@ -23,21 +23,10 @@ export class PlanetsApi {
   }
 
   loadPlanets() {
-    // TODO: Add actions
     return this.http.get<Planets>(BASE_URL, {});
-      // .pipe(
-      //   map((response: Planets) => response),
-      //   catchError(this.handleError())
-      // );
-      // .pipe(take(1))
-      // .subscribe(
-          // planets => {
-            // console.log(planets);
-              // this.store.dispatch(new activeOrganizationActions.LoadOrganizationSuccess(organization));
-          // },
-          // (errorResponse: HttpErrorResponse) => {
-              // this.store.dispatch(new activeOrganizationActions.LoadOrganizationFail(errorResponse));
-          // }
-      // );
+  }
+
+  loadPlanet(id: Planet['id']) {
+    return this.http.get<Planet>(BASE_URL + '/' + id, {});
   }
 }

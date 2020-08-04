@@ -11,7 +11,7 @@ import {
 
 import { getPlanets, getPlanetsSuccess, getPlanetsError } from '../data/modules/planets/actions';
 import { Action } from '@ngrx/store';
-import { Planets } from '../data/modules/planets/models';
+import { Planets, Planet } from '../data/modules/planets/models';
 
 @Injectable()
 export class PlanetsEffects {
@@ -23,7 +23,9 @@ export class PlanetsEffects {
     ofType(GET_PLANETS),
     switchMap(action =>
       this.planetsApi.loadPlanets().pipe(
-        map((planets: Planets) => getPlanetsSuccess({ planets: planets.results })),
+        map((planets: Planets) => planets.results),
+        map((planets: Planet[]) => planets.map(planet => ({...planet, id: planet.url.charAt(planet.url.length - 2) }))),
+        map((planetsWithIds: Planet[]) => getPlanetsSuccess({ planets: planetsWithIds })),
         catchError(error => of(getPlanetsError(error)))
       )
     )
