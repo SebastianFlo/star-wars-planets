@@ -2,3 +2,6 @@
 
 
 {{ planets$ | async | json }}
+
+
+<li *ngFor="let item of items; index as i; trackBy: trackByFn">...</li>

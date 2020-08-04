@@ -27,6 +27,6 @@ export class PlanetsApi {
   }
 
   loadPlanet(id: Planet['id']) {
-    return this.http.get<Planet>(BASE_URL + '/' + id, {});
+    return this.http.get<Planet>(`${BASE_URL}/${id}/`, {});
   }
 }

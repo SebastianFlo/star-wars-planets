@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 
-import { getPlanets, getPlanet, reset, getPlanetsSuccess } from './actions';
+import { getPlanets, getPlanetSuccess, reset, getPlanetsSuccess } from './actions';
 import { Planet } from './models';
 import { Action } from 'rxjs/internal/scheduler/Action';
 
@@ -15,9 +15,8 @@ export const initialPlanetsState: PlanetState = {
 };
 
 const reducer = createReducer(initialPlanetsState,
-  // on(getPlanets, state => state),
-  // on(getPlanet, state => state),
   on(getPlanetsSuccess, (state, { planets }) => ({ ...state, planets })),
+  on(getPlanetSuccess, (state, { active }) => ({ ...state, active })),
   on(reset, state => initialPlanetsState),
 );
 

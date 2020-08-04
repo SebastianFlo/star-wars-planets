@@ -20,10 +20,9 @@ export class PlanetsComponent implements OnInit {
   constructor(private store: Store<AppState>) { }
 
   ngOnInit(): void {
-    // this.planetsApi.loadPlanets();
-    // dispatch planet load
     this.planets$ = this.store.pipe(select('planets'), map(state => state.planets));
 
+    // TODO: Some caching
     this.store.dispatch(getPlanets());
   }
 
