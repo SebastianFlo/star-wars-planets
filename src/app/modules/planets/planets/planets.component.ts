@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { PlanetsApi } from 'src/app/api/planets.api';
+import { Observable } from 'rxjs';
+
+import { Planet } from 'src/app/data/modules/planets/models';
+import { Store, select } from '@ngrx/store';
+import { PlanetState } from 'src/app/data/modules/planets/reducer';
+import { getPlanets } from 'src/app/data/modules/planets/actions';
 
 @Component({
   selector: 'app-planets',
@@ -7,11 +12,16 @@ import { PlanetsApi } from 'src/app/api/planets.api';
   styleUrls: ['./planets.component.scss']
 })
 export class PlanetsComponent implements OnInit {
+  planets$: Observable<Planet[]>;
 
-  constructor(private planetsApi: PlanetsApi) { }
+  constructor(private store: Store<PlanetState>) { }
 
   ngOnInit(): void {
-    this.planetsApi.loadPlanets();
+    // this.planetsApi.loadPlanets();
+    // dispatch planet load
+    this.planets$ = this.store.pipe(select('planets'));
+
+    this.store.dispatch(getPlanets());
   }
 
 }

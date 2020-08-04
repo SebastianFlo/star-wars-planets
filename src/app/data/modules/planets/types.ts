@@ -1,0 +1,3 @@
+export const GET_PLANETS: string = 'PLANETS/GET_PLANETS';
+export const GET_PLANETS_SUCCESS: string = 'PLANETS/GET_PLANETS_SUCCESS';
+export const GET_PLANETS_ERROR: string = 'PLANETS/GET_PLANETS_ERROR';
