@@ -13,7 +13,11 @@
 
   <div class="planet-content">
     <div class="planet-content-data">
-      <pre>{{ planet$ | async | json }}</pre>
+      <app-data-field
+        *ngFor="let field of dataFields"
+        [field]="field"
+        [value]="(planet$ | async)[field.field]">
+      </app-data-field>
     </div>
     <div class="planet-content-image">
       <img src="assets/planet.png">

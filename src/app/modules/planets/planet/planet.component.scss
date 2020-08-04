@@ -5,6 +5,10 @@
 
   .planet-header {
     background-color: var(--planet-bg-header-light);
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    padding: 1rem 2rem;
   }
 
   .planet-content {
@@ -13,9 +17,13 @@
 
     display: flex;
 
+    .planet-content-data {
+      padding: 1rem;
+    }
+
     .planet-content-image {
       img {
-        width: 600px;
+        width: 550px;
       }
     }
 

@@ -22,3 +22,9 @@ export interface Planets {
   previous: string;
   results: Planet[];
 }
+
+export interface DataField {
+  field: keyof Planet;
+  name: string;
+  order: number;
+}

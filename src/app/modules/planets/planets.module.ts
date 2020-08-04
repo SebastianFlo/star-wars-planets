@@ -6,6 +6,7 @@ import { PlanetsApi } from '../../api/planets.api';
 
 import { PlanetsComponent } from './planets/planets.component';
 import { PlanetComponent } from './planet/planet.component';
+import { DataFieldComponent } from './planet/data-field/data-field.component';
 
 const routes: Routes = [
   {
@@ -16,13 +17,13 @@ const routes: Routes = [
   },
   {
     path: ':id',
-    component: PlanetComponent
+    component: PlanetComponent,
   },
 ];
 
 @NgModule({
-  declarations: [PlanetsComponent, PlanetComponent],
+  declarations: [PlanetsComponent, PlanetComponent, DataFieldComponent],
   imports: [CommonModule, RouterModule.forChild(routes)],
-  providers: [PlanetsApi]
+  providers: [PlanetsApi],
 })
 export class PlanetsModule {}
