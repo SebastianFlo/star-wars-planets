@@ -66,7 +66,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "star-wars-planets:build"
+            "browserTarget": "star-wars-planets:build",
+            "proxyConfig": "src/proxy.conf.json"
           },
           "configurations": {
             "production": {
