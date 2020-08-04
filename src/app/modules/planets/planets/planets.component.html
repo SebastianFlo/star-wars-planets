@@ -1,7 +1,5 @@
 <p>planets works!</p>
 
-
-{{ planets$ | async | json }}
-
-
-<li *ngFor="let item of items; index as i; trackBy: trackByFn">...</li>
+<li *ngFor="let planet of planets$ | async">
+  <a [routerLink]="[planet.id]">{{ planet.name }}</a>
+</li>
