@@ -1,0 +1,23 @@
+.planet-card {
+  box-shadow: 1px 1px 3px 3px rgba(255, 255, 255, 0.2);
+  margin-left: 20%;
+  margin-right: 20%;
+
+  .planet-header {
+    background-color: var(--planet-bg-header-light);
+  }
+
+  .planet-content {
+    background-color: var(--planet-bg-content-light);
+    color: white;
+
+    display: flex;
+
+    .planet-content-image {
+      img {
+        width: 600px;
+      }
+    }
+
+  }
+}

@@ -2,4 +2,30 @@
 
 <a [routerLink]="['..']">BACK</a>
 
-<pre> {{ planet$ | async | json }} </pre>
+<!-- <pre> {{ planet$ | async | json }} </pre> -->
+
+<div class="planet-card">
+
+  <div class="planet-header">
+    <img width="40" src="assets/stormtrooper-icon.svg">
+    {{ (planet$ | async ).name }}
+  </div>
+
+  <div class="planet-content">
+    <div class="planet-content-data">
+      <pre>{{ planet$ | async | json }}</pre>
+    </div>
+    <div class="planet-content-image">
+      <img src="assets/planet.png">
+    </div>
+  </div>
+
+</div>
+
+// Main Card
+
+  // Header
+      // Logo // Title
+
+  // Content
+    // Data // Image

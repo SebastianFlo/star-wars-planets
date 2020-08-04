@@ -1,5 +1,11 @@
+html,
+body {
+  height: 100%;
+}
+
 body {
   background-image: var(--main-bg-image-light);
-background-repeat: no-repeat;
-background-position: top;
+  background-size: auto 110%;
+  background-repeat: no-repeat;
+  background-position: top left;
 }
