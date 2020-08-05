@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, AfterContentInit, AfterViewChecked } from '@angular/core';
 import { Observable } from 'rxjs';
+import VanillaTilt from 'vanilla-tilt';
 
 import { Planet } from 'src/app/data/modules/planets/models';
 import { Store, select } from '@ngrx/store';
@@ -16,7 +17,7 @@ import { setScroll } from 'src/app/data/modules/core/actions';
   templateUrl: './planets.component.html',
   styleUrls: ['./planets.component.scss']
 })
-export class PlanetsComponent implements OnInit, AfterViewInit {
+export class PlanetsComponent implements OnInit, AfterViewInit, AfterViewChecked {
   planets$: Observable<Planet[]>;
   @ViewChild('planetContainer') planetContainer: ElementRef;
 
@@ -32,7 +33,11 @@ export class PlanetsComponent implements OnInit, AfterViewInit {
       .pipe(select('core'), map(state => state.position), take(1))
       .subscribe(position => {
         this.planetContainer.nativeElement.scrollLeft = position;
-      })
+      });
+  }
+
+  ngAfterViewChecked(): void {
+    this.addTilt();
   }
 
   goToPlanet(planet: Planet) {
@@ -56,6 +61,18 @@ export class PlanetsComponent implements OnInit, AfterViewInit {
     const outMax = 400;
 
     return (diameter - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
+  }
+
+  addTilt() {
+    const planets: any = document.querySelectorAll('.planet-item img');
+
+    VanillaTilt.init(planets, {
+      max: 25,
+      speed: 400,
+      glare: true,
+      scale: 1.2,
+      'max-glare': 0.6
+    });
   }
 
 }
