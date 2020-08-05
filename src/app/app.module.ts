@@ -12,6 +12,8 @@ import { AppComponent } from './app.component';
 import { planetsReducer } from './data/modules/planets/reducer';
 import { PlanetsEffects } from './api/planets.effects';
 
+import { coreReducer } from './data/modules/core/reducer';
+
 export function logger(reducer): any {
   // default, no options
   return storeLogger()(reducer);
@@ -27,7 +29,7 @@ export const metaReducers = [logger];
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    StoreModule.forRoot({ planets: planetsReducer }, {metaReducers}),
+    StoreModule.forRoot({ planets: planetsReducer, core: coreReducer }, {metaReducers}),
     EffectsModule.forRoot([PlanetsEffects])
   ],
   providers: [],

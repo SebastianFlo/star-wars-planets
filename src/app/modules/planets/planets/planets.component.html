@@ -1,5 +1,9 @@
-<p>planets works!</p>
-
-<li *ngFor="let planet of planets$ | async">
-  <button (click)="goToPlanet(planet)">{{ planet.name }}</button>
-</li>
+<!-- planet container -->
+<div #planetContainer class="planet-container snap-parent">
+  <div *ngFor="let planet of planets$ | async" class="planet-item snap-child">
+    <h1>{{ planet.name}}</h1>
+    <img [width]="calculateDiameter(planet.diameter)" src="assets/planet.png">
+    <button (click)="goToPlanet(planet)">Læs Mere</button>
+  </div>
+</div>
+<!-- planet item -->

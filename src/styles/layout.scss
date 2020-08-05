@@ -9,3 +9,24 @@ body {
   background-repeat: no-repeat;
   background-position: top left;
 }
+
+@media only screen and (min-width: 1367px) {
+  .snap-parent {
+    scroll-snap-type: x proximity;
+  }
+
+  .snap-child {
+    scroll-snap-align: center;
+  }
+}
+
+button {
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+  background: transparent;
+  cursor: pointer;
+}
+

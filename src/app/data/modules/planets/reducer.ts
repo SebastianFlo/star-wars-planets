@@ -11,7 +11,7 @@ export interface PlanetState {
 
 export const initialPlanetsState: PlanetState = {
   planets: [],
-  active: {}
+  active: {},
 };
 
 const reducer = createReducer(initialPlanetsState,
