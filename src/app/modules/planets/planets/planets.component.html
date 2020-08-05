@@ -1,5 +1,5 @@
 <p>planets works!</p>
 
 <li *ngFor="let planet of planets$ | async">
-  <a [routerLink]="[planet.id]">{{ planet.name }}</a>
+  <button (click)="goToPlanet(planet)">{{ planet.name }}</button>
 </li>
