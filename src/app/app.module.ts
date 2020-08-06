@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { StoreModule, ActionReducer, State } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -13,6 +13,9 @@ import { planetsReducer } from './data/modules/planets/reducer';
 import { PlanetsEffects } from './api/planets.effects';
 
 import { coreReducer } from './data/modules/core/reducer';
+import { SharedModule } from './modules/shared/shared.module';
+
+import { ErrorInterceptor } from './api/error-interceptor';
 
 export function logger(reducer): any {
   // default, no options
@@ -30,9 +33,16 @@ export const metaReducers = [logger];
     AppRoutingModule,
     HttpClientModule,
     StoreModule.forRoot({ planets: planetsReducer, core: coreReducer }, {metaReducers}),
-    EffectsModule.forRoot([PlanetsEffects])
+    EffectsModule.forRoot([PlanetsEffects]),
+    SharedModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
