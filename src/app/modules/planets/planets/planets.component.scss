@@ -3,10 +3,12 @@
   flex-wrap: nowrap;
   overflow-x: auto;
   gap: 12px;
-  margin: 10px;
+  padding: 0px;
   height: 100%;
   align-items: center;
   justify-content: space-between;
+  margin: 0px;
+
 
   .planet-item {
     flex: 0 0 auto;
@@ -15,6 +17,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    h1 {
+      border-bottom: 2px solid;
+    }
 
     button {
       text-transform: uppercase;
@@ -28,5 +34,24 @@
       width: 100px;
       transform: translateZ(20px);
     }
+
+    .planet-image {
+      margin-top: 20px;
+      border-radius: 50%;
+      // background: url(https://www.solarsystemscope.com/images/textures/full/2k_makemake_fictional.jpg);
+      background-size: contain;
+      overflow: hidden;
+      box-shadow: -6px -7px 19px 0px black inset, 0 0px 130px 40px rgba(234, 205, 199, 0.6) inset, 0 0px 23px 4px rgba(234, 205, 199, 0.6) inset, 0 -10px 130px rgba(188, 143, 127, 0.6);
+      cursor: var(--mouse-cursor-light), auto;
+    }
+
+    .planet-image:hover {
+      animation: planet 60s infinite linear;
+    }
   }
+}
+
+@keyframes planet {
+  from {background-position-y: 0px;}
+  to {background-position-y: -1000px;}
 }

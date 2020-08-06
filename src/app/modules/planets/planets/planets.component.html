@@ -1,8 +1,17 @@
 <!-- planet container -->
 <div #planetContainer class="planet-container snap-parent">
+
+  {{ showMyElement | json }}
+
   <div *ngFor="let planet of planets$ | async" class="planet-item snap-child">
     <h1>{{ planet.name}}</h1>
-    <img (click)="goToPlanet(planet)" data-tilt [width]="calculateDiameter(planet.diameter)" src="assets/planet.png">
+    <!-- <img (click)="goToPlanet(planet)" data-tilt [width]="calculateDiameter(planet.diameter)" src="assets/planet.png"> -->
+    <div class="planet-image animate" (click)="goToPlanet(planet)"
+      [ngStyle]="{
+        height: calculateDiameter(planet.diameter) + 'px',
+        width: calculateDiameter(planet.diameter) + 'px',
+        background: 'url(/assets/' + generateSlug(planet.name) + '.png)'
+      }"><div>
     <!-- <button (click)="goToPlanet(planet)">Læs Mere</button> -->
   </div>
 </div>

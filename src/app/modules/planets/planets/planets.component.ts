@@ -20,6 +20,7 @@ import { setScroll } from 'src/app/data/modules/core/actions';
 export class PlanetsComponent implements OnInit, AfterViewInit, AfterViewChecked {
   planets$: Observable<Planet[]>;
   @ViewChild('planetContainer') planetContainer: ElementRef;
+  showMyElement = {};
 
   constructor(private store: Store<AppState>, private router: Router) { }
 
@@ -38,6 +39,7 @@ export class PlanetsComponent implements OnInit, AfterViewInit, AfterViewChecked
 
   ngAfterViewChecked(): void {
     this.addTilt();
+    // this.setIntersectionObserver();
   }
 
   goToPlanet(planet: Planet) {
@@ -64,15 +66,25 @@ export class PlanetsComponent implements OnInit, AfterViewInit, AfterViewChecked
   }
 
   addTilt() {
-    const planets: any = document.querySelectorAll('.planet-item img');
+    const planets: any = document.querySelectorAll('.planet-item .planet-image');
 
     VanillaTilt.init(planets, {
-      max: 25,
+      max: 0,
       speed: 400,
-      glare: true,
+      // glare: true,
       scale: 1.2,
-      'max-glare': 0.6
+      'max-glare': 0.0
     });
   }
 
+  setIntersectionObserver() {
+
+  }
+
+  generateSlug(name: string) {
+    return name.toLowerCase().replace(/\s/g,'');
+  }
+
+  ngOnDestroy() {
+  }
 }
