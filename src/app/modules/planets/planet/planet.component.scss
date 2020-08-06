@@ -1,7 +1,13 @@
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  height: 100%;
+}
+
 .planet-card {
   box-shadow: 1px 1px 3px 3px rgba(255, 255, 255, 0.2);
-  margin-left: 20%;
-  margin-right: 20%;
 
   .planet-header {
     background-color: var(--planet-bg-header-light);
@@ -13,17 +19,23 @@
 
   .planet-content {
     background-color: var(--planet-bg-content-light);
-    color: white;
-
     display: flex;
+    padding: 30px;
 
     .planet-content-data {
       padding: 1rem;
+      flex: 35%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     .planet-content-image {
+      flex: 65%;
       img {
-        width: 550px;
+        max-width: 550px;
+        width: 100%;
+        height: auto;
       }
     }
 

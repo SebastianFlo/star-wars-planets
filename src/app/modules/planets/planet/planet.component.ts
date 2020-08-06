@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2, ElementRef, ViewChild, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Planet } from 'src/app/data/modules/planets/models';
 import { Store, select } from '@ngrx/store';
 import { AppState } from 'src/app/data/state';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { getPlanet } from 'src/app/data/modules/planets/actions';
 import { map } from 'rxjs/operators';
 
@@ -14,14 +14,18 @@ import { DataFields } from './data-field/data-field.config';
   templateUrl: './planet.component.html',
   styleUrls: ['./planet.component.scss'],
 })
-export class PlanetComponent implements OnInit {
+export class PlanetComponent implements OnInit, OnDestroy {
+  @ViewChild('planet') planet: ElementRef;
+
   planet$: Observable<Planet | any>;
   id: Planet['id'];
   dataFields: {};
 
   constructor(
     private store: Store<AppState>,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private renderer: Renderer2,
+    private router: Router
   ) {
     this.dataFields = DataFields;
   }
@@ -37,5 +41,18 @@ export class PlanetComponent implements OnInit {
       this.store.dispatch(getPlanet({ id: this.id }));
     });
 
+    this.listenToOutsideClick();
+  }
+
+  listenToOutsideClick() {
+    this.renderer.listen(document.querySelector('app-planet'), 'click',(e:Event)=>{
+     if(e.target !== this.planet.nativeElement){
+        this.router.navigate(['..']);
+     }
+ });
+  }
+
+  ngOnDestroy() {
+    this.renderer.destroy();
   }
 }

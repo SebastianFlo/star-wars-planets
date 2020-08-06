@@ -1,3 +1,8 @@
+:root {
+  touch-action: pan-x pan-y;
+  height: 100%
+}
+
 html,
 body {
   height: 100%;
@@ -13,7 +18,7 @@ body {
   background-position: top left;
 }
 
-@media only screen and (min-width: 1367px) {
+// @media only screen and (min-width: 1367px) {
   .snap-parent {
     scroll-snap-type: x proximity;
   }
@@ -21,7 +26,7 @@ body {
   .snap-child {
     scroll-snap-align: center;
   }
-}
+// }
 
 button {
   border: none;

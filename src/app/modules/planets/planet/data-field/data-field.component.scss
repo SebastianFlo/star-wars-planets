@@ -1,0 +1,18 @@
+
+.planet-data-field {
+  padding-bottom: 20px;
+  .planet-data-field-name {
+    color: var(--planet-data-field-name-light);
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 0.5rem;
+    border-bottom: 1px solid var(--planet-data-field-border-light);
+    margin-bottom: 5px;
+  }
+
+  .planet-data-field-value {
+    color: var(--planet-data-field-value-light);
+    font-size: 1.3rem;
+    font-weight: 500;
+  }
+}
