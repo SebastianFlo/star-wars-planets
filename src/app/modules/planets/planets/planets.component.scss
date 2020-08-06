@@ -41,7 +41,8 @@
       // background: url(https://www.solarsystemscope.com/images/textures/full/2k_makemake_fictional.jpg);
       background-size: contain;
       overflow: hidden;
-      box-shadow: -6px -7px 19px 0px black inset, 0 0px 130px 40px rgba(234, 205, 199, 0.6) inset, 0 0px 23px 4px rgba(234, 205, 199, 0.6) inset, 0 -10px 130px rgba(188, 143, 127, 0.6);
+      box-shadow: -6px -7px 19px 0px black inset, 0 0 20px #fff;
+      // box-shadow: -6px -7px 19px 0px black inset, 0 0px 130px 40px rgba(234, 205, 199, 0.6) inset, 0 0px 23px 4px rgba(234, 205, 199, 0.6) inset, 0 -10px 130px rgba(188, 143, 127, 0.6);
       cursor: var(--mouse-cursor-light), auto;
     }
 
