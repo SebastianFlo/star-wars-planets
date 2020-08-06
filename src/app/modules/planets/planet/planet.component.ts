@@ -46,7 +46,7 @@ export class PlanetComponent implements OnInit, OnDestroy {
 
   listenToOutsideClick() {
     this.renderer.listen(document.querySelector('app-planet'), 'click',(e:Event)=>{
-     if(e.target !== this.planet.nativeElement){
+     if(!this.planet.nativeElement.contains(e.target)){
         this.router.navigate(['..']);
      }
  });
