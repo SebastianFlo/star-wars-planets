@@ -1,13 +1,16 @@
 import { TestBed } from '@angular/core/testing';
 
-import { PlanetsService } from './planets.service';
+import { PlanetsApi } from './planets.api';
+import { HttpClient, HttpHandler } from '@angular/common/http';
 
-describe('PlanetsService', () => {
-  let service: PlanetsService;
+describe('PlanetsApi', () => {
+  let service: PlanetsApi;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(PlanetsService);
+    TestBed.configureTestingModule({
+      providers: [HttpClient, HttpHandler]
+    });
+    service = TestBed.inject(PlanetsApi);
   });
 
   it('should be created', () => {
